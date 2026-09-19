@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Happy Birthday 💖</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    min-height:100vh;
+    overflow:hidden;
+    font-family:"Trebuchet MS",Arial,sans-serif;
+    background:linear-gradient(135deg,#ffd6e7,#e5d4ff,#c9f3ff);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* Floating Hearts */
+.bg-heart{
+    position:fixed;
+    bottom:-50px;
+    font-size:25px;
+    pointer-events:none;
+    animation:floatUp 7s linear infinite;
+    opacity:.7;
+}
+
+.h1{left:5%;animation-delay:0s;}
+.h2{left:20%;animation-delay:2s;}
+.h3{left:40%;animation-delay:4s;}
+.h4{left:65%;animation-delay:1s;}
+.h5{left:85%;animation-delay:3s;}
+
+@keyframes floatUp{
+    0%{
+        transform:translateY(0) rotate(0);
+        opacity:0;
+    }
+    15%{
+        opacity:1;
+    }
+    100%{
+        transform:translateY(-110vh) rotate(360deg);
+        opacity:0;
+    }
+}
+
+/* Main Card */
+.card{
+    width:92%;
+    max-width:430px;
+    height:650px;
+    position:relative;
+    overflow:hidden;
+
+    background:rgba(255,255,255,.38);
+    backdrop-filter:blur(15px);
+
+    border:1px solid rgba(255,255,255,.7);
+    border-radius:32px;
+
+    box-shadow:0 20px 50px rgba(80,40,100,.2);
+
+    text-align:center;
+}
+
+/* Pages */
+.page{
+    position:absolute;
+    inset:0;
+
+    padding:30px 25px;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
+    transition:
+        transform .6s ease,
+        opacity .6s ease;
+}
+
+.page.hidden{
+    opacity:0;
+    pointer-events:none;
+    transform:translateX(100%);
+}
+
+.page.previous{
+    transform:translateX(-100%);
+}
+
+/* First Page */
+.title{
+    position:absolute;
+    top:40px;
+}
+
+.title h1{
+    color:#ff3f81;
+    font-size:38px;
+    text-shadow:0 4px 10px rgba(255,60,130,.2);
+}
+
+.title p{
+    color:#663399;
+    margin-top:8px;
+    font-size:16px;
+}
+
+/* Cat */
+.cat{
+    position:relative;
+    width:190px;
+    height:210px;
+    margin-top:65px;
+
+    animation:catBounce 2s ease-in-out infinite;
+}
+
+@keyframes catBounce{
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-12px);
+    }
+}
+
+/* Cat Ears */
+.ear{
+    position:absolute;
+    top:0;
+
+    width:70px;
+    height:70px;
+
+    background:#fff;
+    border-radius:15px 55px 10px 55px;
+}
+
+.ear.left{
+    left:12px;
+    transform:rotate(-25deg);
+}
+
+.ear.right{
+    right:12px;
+    transform:rotate(115deg);
+}
+
+.inner-ear{
+    width:38px;
+    height:38px;
+
+    background:#ff9fbd;
+    border-radius:15px 55px 10px 55px;
+
+    position:absolute;
+    top:13px;
+    left:15px;
+}
+
+/* Cat Head */
+.head{
+    position:absolute;
+
+    width:155px;
+    height:125px;
+
+    left:18px;
+    top:35px;
+
+    background:#fff;
+    border-radius:50%;
+
+    box-shadow:0 7px 18px rgba(0,0,0,.12);
+}
+
+/* Eyes */
+.eye{
+    position:absolute;
+
+    width:15px;
+    height:21px;
+
+    top:42px;
+
+    background:#333;
+    border-radius:50%;
+}
+
+.eye.left{
+    left:42px;
+}
+
+.eye.right{
+    right:42px;
+}
+
+.eye::after{
+    content:"";
+
+    position:absolute;
+
+    width:5px;
+    height:5px;
+
+    top:3px;
+    left:3px;
+
+    background:white;
+    border-radius:50%;
+}
+
+/* Nose */
+.nose{
+    position:absolute;
+
+    top:66px;
+    left:70px;
+
+    width:14px;
+    height:10px;
+
+    background:#ff719c;
+    border-radius:50%;
+}
+
+/* Mouth */
+.mouth{
+    position:absolute;
+
+    top:75px;
+    left:65px;
+
+    width:25px;
+    height:17px;
+
+    border-bottom:3px solid #555;
+    border-radius:50%;
+}
+
+/* Whiskers */
+.whisker{
+    position:absolute;
+
+    width:45px;
+    height:2px;
+
+    background:#777;
+}
+
+.w1{
+    left:-27px;
+    top:72px;
+    transform:rotate(8deg);
+}
+
+.w2{
+    left:-27px;
+    top:82px;
+    transform:rotate(-8deg);
+}
+
+.w3{
+    right:-27px;
+    top:72px;
+    transform:rotate(-8deg);
+}
+
+.w4{
+    right:-27px;
+    top:82px;
+    transform:rotate(8deg);
+}
+
+/* Rose Bucket */
+.bucket{
+    position:absolute;
+
+    width:100px;
+    height:65px;
+
+    left:45px;
+    bottom:0;
+
+    background:#ff91b0;
+
+    border-radius:8px 8px 25px 25px;
+
+    box-shadow:0 6px 12px rgba(0,0,0,.15);
+
+    z-index:5;
+}
+
+.bucket::before{
+    content:"";
+
+    position:absolute;
+
+    width:80px;
+    height:25px;
+
+    left:7px;
+    top:-23px;
+
+    border:5px solid #ff6e99;
+    border-bottom:0;
+
+    border-radius:50px 50px 0 0;
+}
+
+/* Roses */
+.rose{
+    position:absolute;
+
+    font-size:38px;
+
+    animation:roseMove 2s ease-in-out infinite;
+}
+
+.r1{
+    left:45px;
+    bottom:38px;
+}
+
+.r2{
+    left:70px;
+    bottom:42px;
+    font-size:32px;
+    animation-delay:.3s;
+}
+
+.r3{
+    left:25px;
+    bottom:40px;
+    font-size:31px;
+    animation-delay:.6s;
+}
+
+@keyframes roseMove{
+    0%,100%{
+        transform:rotate(-5deg);
+    }
+
+    50%{
+        transform:rotate(6deg) translateY(-4px);
+    }
+}
+
+/* Buttons */
+.btn{
+    border:0;
+    outline:none;
+
+    padding:14px 30px;
+
+    border-radius:30px;
+
+    background:linear-gradient(135deg,#ff4f91,#ff7eb3);
+
+    color:white;
+
+    font-size:17px;
+    font-weight:bold;
+
+    cursor:pointer;
+
+    box-shadow:0 8px 20px rgba(255,70,130,.3);
+
+    transition:.25s;
+
+    margin-top:20px;
+}
+
+.btn:hover{
+    transform:scale(1.06);
+}
+
+.btn:active{
+    transform:scale(.95);
+}
+
+/* Notes */
+.note{
+    padding:35px 25px;
+}
+
+.note-icon{
+    font-size:65px;
+    margin-bottom:25px;
+
+    animation:pop .8s ease;
+}
+
+.note h2{
+    color:#ff3f81;
+    font-size:30px;
+    margin-bottom:18px;
+}
+
+.note p{
+    color:#543b65;
+    font-size:18px;
+    line-height:1.7;
+}
+
+@keyframes pop{
+    0%{
+        transform:scale(0);
+        opacity:0;
+    }
+
+    70%{
+        transform:scale(1.15);
+    }
+
+    100%{
+        transform:scale(1);
+        opacity:1;
+    }
+}
+
+/* Final Page */
+.final{
+    background:linear-gradient(
+        135deg,
+        rgba(255,255,255,.15),
+        rgba(255,190,220,.25)
+    );
+}
+
+.final h1{
+    font-size:38px;
+    color:#ff3f81;
+
+    animation:finalPop 1s ease;
+}
+
+.final .big-heart{
+    font-size:75px;
+    margin:20px;
+
+    animation:heartbeat 1.2s infinite;
+}
+
+.final p{
+    color:#563c68;
+
+    font-size:18px;
+    line-height:1.7;
+
+    max-width:330px;
+}
+
+.signature{
+    margin-top:25px;
+
+    font-size:19px;
+    font-weight:bold;
+
+    color:#ff3f81;
+}
+
+.signature span{
+    font-size:21px;
+}
+
+@keyframes heartbeat{
+    0%,100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.18);
+    }
+}
+
+@keyframes finalPop{
+    from{
+        transform:scale(.2);
+        opacity:0;
+    }
+
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
+}
+
+/* Confetti */
+.confetti{
+    position:fixed;
+
+    width:9px;
+    height:14px;
+
+    top:-20px;
+
+    animation:confettiFall 4s linear forwards;
+
+    z-index:100;
+}
+
+@keyframes confettiFall{
+    0%{
+        transform:translateY(0) rotate(0);
+    }
+
+    100%{
+        transform:translateY(110vh) rotate(720deg);
+    }
+}
+
+/* Mobile */
+@media(max-height:700px){
+
+    .card{
+        height:90vh;
+    }
+
+    .title h1{
+        font-size:32px;
+    }
+
+    .cat{
+        transform:scale(.85);
+        margin-top:55px;
+    }
+
+    .note p{
+        font-size:16px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Floating Hearts -->
+
+<div class="bg-heart h1">💗</div>
+<div class="bg-heart h2">💕</div>
+<div class="bg-heart h3">💖</div>
+<div class="bg-heart h4">💝</div>
+<div class="bg-heart h5">💗</div>
+
+
+<div class="card">
+
+<!-- ================= FIRST PAGE ================= -->
+
+<section class="page" id="page0">
+
+    <div class="title">
+
+        <h1>🎂 Happy Birthday Othoy🎂</h1>
+
+        <p>A little surprise for you 💕</p>
+
+    </div>
+
+
+    <!-- Cute Cat -->
+
+    <div class="cat">
+
+        <div class="ear left">
+            <div class="inner-ear"></div>
+        </div>
+
+        <div class="ear right">
+            <div class="inner-ear"></div>
+        </div>
+
+
+        <div class="head">
+
+            <div class="eye left"></div>
+            <div class="eye right"></div>
+
+            <div class="nose"></div>
+
+            <div class="mouth"></div>
+
+            <div class="whisker w1"></div>
+            <div class="whisker w2"></div>
+            <div class="whisker w3"></div>
+            <div class="whisker w4"></div>
+
+        </div>
+
+
+        <!-- Rose Bucket -->
+
+        <div class="bucket">
+
+            <div class="rose r1">🌹</div>
+            <div class="rose r2">🌹</div>
+            <div class="rose r3">🌹</div>
+
+        </div>
+
+    </div>
+
+
+    <button class="btn" onclick="nextPage()">
+        💌 Open My Message
+    </button>
+
+</section>
+
+
+
+<!-- ================= SECOND PAGE ================= -->
+
+<section class="page hidden" id="page1">
+
+    <div class="note">
+
+        <div class="note-icon">😺🌹</div>
+
+        <h2>First of all...</h2>
+
+        <p>
+            Tor jonno ei chotto surprise ta banalam.
+            Karon tui amar most favorite person. 🥹❤️
+        </p>
+
+        <button class="btn" onclick="nextPage()">
+            Continue ➜
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= THIRD PAGE ================= -->
+
+<section class="page hidden" id="page2">
+
+    <div class="note">
+
+        <div class="note-icon">🤝💖</div>
+
+        <h2>Ekta kotha bolbo...</h2>
+
+        <p>
+            Ami tor moto ekjon vaggo
+            amar jibone peyechi—eta amar jonno
+            sobtheke best paoa. 🥹❤️
+        </p>
+
+        <button class="btn" onclick="nextPage()">
+            Continue ➜
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= FOURTH PAGE ================= -->
+
+<section class="page hidden" id="page3">
+
+    <div class="note">
+
+        <div class="note-icon">🙏✨</div>
+
+        <h2>My little prayer...</h2>
+
+        <p>
+            Doa kori tui jibone onek sofol ho,
+            tor sob shopno puron hok,
+            ar sobsomoy happy thakish. ❤️✨
+        </p>
+
+        <button class="btn" onclick="nextPage()">
+            Continue ➜
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= FIFTH PAGE ================= -->
+
+<section class="page hidden" id="page4">
+
+    <div class="note">
+
+        <div class="note-icon">🌸💖</div>
+
+        <h2>One more thing...</h2>
+
+        <p>
+            Jotoi din chole jak,
+            amader ei beautiful bondhon
+            ar ei special memories gulo
+            sobsomoy mone thakbe. 🫶✨
+        </p>
+
+        <button class="btn" onclick="nextPage()">
+            One Last Thing ➜
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= FINAL PAGE ================= -->
+
+<section class="page hidden final" id="page5">
+
+    <div class="big-heart">❤️</div>
+
+    <h1>Happy Birthday! 🎂</h1>
+
+    <p>
+
+        May your life be filled with
+        happiness, success, love,
+        beautiful memories and
+        countless reasons to smile. 🌸
+
+        <br><br>
+
+        Doa kori tor protita din
+        ajker diner motoi beautiful hok. ✨
+
+        <br><br>
+
+        Always stay happy,
+        keep smiling and
+        take care of yourself. 🫶
+
+    </p>
+
+
+    <div class="signature">
+
+        With lots of love & wishes 💖
+
+        <br>
+
+        <span>
+            Your Gadha Friend,<br>
+            Nayem 🙂
+        </span>
+
+    </div>
+
+</section>
+
+</div>
+
+
+
+<script>
+
+/* ================= PAGE SYSTEM ================= */
+
+let currentPage = 0;
+
+const pages = document.querySelectorAll(".page");
+
+
+function nextPage(){
+
+    /* Current page slides away */
+
+    pages[currentPage].classList.remove("hidden");
+
+    pages[currentPage].classList.add("previous");
+
+
+    /* Move to next page */
+
+    currentPage++;
+
+
+    pages[currentPage].classList.remove("hidden");
+
+
+    /* Restart icon animation */
+
+    const icon =
+        pages[currentPage].querySelector(".note-icon");
+
+
+    if(icon){
+
+        icon.style.animation = "none";
+
+        setTimeout(() => {
+
+            icon.style.animation = "pop .8s ease";
+
+        },10);
+
+    }
+
+
+    /* Final surprise */
+
+    if(currentPage === pages.length - 1){
+
+        createConfetti();
+
+        setTimeout(createConfetti,800);
+
+        setTimeout(createConfetti,1600);
+
+        setTimeout(createConfetti,2400);
+    }
+}
+
+
+
+/* ================= CONFETTI ================= */
+
+function createConfetti(){
+
+    const emojis = [
+
+        "🎉",
+        "🎊",
+        "💖",
+        "💕",
+        "✨",
+        "🌸",
+        "⭐",
+        "💝",
+        "🌹"
+
+    ];
+
+
+    for(let i=0;i<35;i++){
+
+        const confetti =
+            document.createElement("div");
+
+
+        confetti.className =
+            "confetti";
+
+
+        confetti.innerHTML =
+            emojis[
+                Math.floor(
+                    Math.random()*emojis.length
+                )
+            ];
+
+
+        confetti.style.left =
+            Math.random()*100 + "vw";
+
+
+        confetti.style.fontSize =
+            (12 + Math.random()*15) + "px";
+
+
+        confetti.style.animationDuration =
+            (2 + Math.random()*3) + "s";
+
+
+        confetti.style.animationDelay =
+            Math.random()*1.5 + "s";
+
+
+        document.body.appendChild(confetti);
+
+
+        setTimeout(() => {
+
+            confetti.remove();
+
+        },6000);
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
